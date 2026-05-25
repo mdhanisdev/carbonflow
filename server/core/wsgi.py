@@ -8,17 +8,20 @@ https://docs.djangoproject.com/en/6.0/howto/deployment/wsgi/
 """
 
 import os
-
-from django.core.wsgi import get_wsgi_application
-from django.core.management import call_command
+import sys
 import logging
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
-application = get_wsgi_application()
-
-# Run migrations on startup (helps ensure DB tables exist in ephemeral deploys)
+# Run migrations before application startup so logs show the output
 try:
-	call_command('migrate', interactive=False)
-except Exception as e:
-	logging.exception('Auto-migrate failed on startup: %s', e)
+	from django.core.management import call_command
+	call_command('migrate', verbosity=1, interactive=False)
+	print('Auto-migrate completed')
+	sys.stdout.flush()
+except Exception:
+	logging.exception('Auto-migrate failed on startup')
+
+from django.core.wsgi import get_wsgi_application
+
+application = get_wsgi_application()
