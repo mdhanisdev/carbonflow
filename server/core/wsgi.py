@@ -13,15 +13,9 @@ import logging
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
-# Run migrations before application startup so logs show the output
-try:
-	from django.core.management import call_command
-	call_command('migrate', verbosity=1, interactive=False)
-	print('Auto-migrate completed')
-	sys.stdout.flush()
-except Exception:
-	logging.exception('Auto-migrate failed on startup')
-
 from django.core.wsgi import get_wsgi_application
 
+# Migrations are run as a separate release step (Procfile `release`).
+# Avoid running migrations at import time to prevent AppRegistryNotReady errors
+# when Gunicorn imports this module during worker startup.
 application = get_wsgi_application()
