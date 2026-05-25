@@ -4,7 +4,8 @@ import axios from "axios";
 
 function App() {
 
-  const BACKENDURL = "http://localhost:8000/";
+  // const BACKENDURL = "http://localhost:8000/";
+  const BACKENDURL = "https://carbonflow-production-d71f.up.railway.app/";
 
   const [records, setRecords] = useState([]);
 
@@ -34,7 +35,8 @@ function App() {
         `${BACKENDURL}api/records/`
       );
 
-      setRecords(response.data);
+      const data = Array.isArray(response.data) ? response.data : response.data.results || [];
+      setRecords(data);
 
     } catch (error) {
       console.error("Fetch error:", error.response?.status, error.response?.data || error.message);

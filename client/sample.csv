@@ -1,4 +1,4 @@
 source_type,category,date,value,unit,scope
-SAP,Fuel Consumption,2026-05-01,5000,kgCO2e,Scope 1
-UTILITY,Electricity Usage,2026-05-02,12000,kgCO2e,Scope 2
-TRAVEL,Business Flight,2026-05-03,800,kgCO2e,Scope 3
+SAP,Electricity,2024-01-15,100.5,kWh,Scope 2
+UTILITY,Water,2024-01-16,50.0,m³,Scope 3
+TRAVEL,Flights,2024-01-17,5000,kg,Scope 3
