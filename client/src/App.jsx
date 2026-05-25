@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 function App() {
+
+  const BACKENDURL = "https://carbonflow-production.up.railway.app/";
 
   const [records, setRecords] = useState([]);
 
@@ -28,7 +31,7 @@ function App() {
     try {
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/records/"
+        `${BACKENDURL}api/records/`
       );
 
       setRecords(response.data);
@@ -52,7 +55,7 @@ function App() {
     try {
 
       await axios.post(
-        "http://127.0.0.1:8000/api/records/upload_csv/",
+        `${BACKENDURL}api/records/upload_csv/`,
         formData
       );
 
@@ -70,7 +73,7 @@ function App() {
   try {
 
     await axios.patch(
-      `http://127.0.0.1:8000/api/records/${id}/`,
+      `${BACKENDURL}api/records/${id}/`,
       {
         status: status
       }
