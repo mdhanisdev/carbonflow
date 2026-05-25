@@ -4,7 +4,7 @@ import axios from "axios";
 
 function App() {
 
-  const BACKENDURL = "https://carbonflow-production.up.railway.app/";
+  const BACKENDURL = "http://localhost:8000/";
 
   const [records, setRecords] = useState([]);
 
@@ -37,7 +37,8 @@ function App() {
       setRecords(response.data);
 
     } catch (error) {
-      console.log(error);
+      console.error("Fetch error:", error.response?.status, error.response?.data || error.message);
+      alert(`Error fetching records: ${error.response?.data?.detail || error.message}`);
     }
   };
 
@@ -64,7 +65,8 @@ function App() {
       fetchRecords();
 
     } catch (error) {
-      console.log(error);
+      console.error("Upload error:", error.response?.status, error.response?.data || error.message);
+      alert(`Upload failed: ${error.response?.data?.error || error.message}`);
     }
   };
 
@@ -82,7 +84,8 @@ function App() {
     fetchRecords();
 
   } catch (error) {
-    console.log(error);
+    console.error("Update error:", error.response?.status, error.response?.data || error.message);
+    alert(`Status update failed: ${error.response?.data?.detail || error.message}`);
   }
 };
 
