@@ -1,5 +1,8 @@
 venv/
+.venv/
+.sixth/
 node_modules/
 __pycache__/
 db.sqlite3
 .env
+tmp_*
