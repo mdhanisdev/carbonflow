@@ -2,8 +2,6 @@
 
 This repository contains a Django REST backend and a React frontend prototype for the Breathe ESG technical assignment.
 
-Live URL: (add deployed URL here)
-
 ## Quick local run (development)
 
 Backend:
@@ -36,16 +34,4 @@ py server/manage.py migrate
 gunicorn core.wsgi --bind 0.0.0.0:$PORT
 ```
 
-- Frontend can be deployed on Vercel/Netlify or served statically; Vite build artifacts can be uploaded to static hosting.
 
-## Submission checklist
-- [ ] Deployed live URL filled above
-- [ ] Shared repo access with: saurav@breatheesg.com, rahul@breatheesg.com, shivang@breatheesg.com
-- [ ] `MODEL.md`, `DECISIONS.md`, `TRADEOFFS.md`, `SOURCES.md` completed (drafts provided)
-
----
-
-If you want, I can:
-- Create a GitHub repository and push these changes (you'll need to provide a GH token or confirm you want to do this locally).
-- Prepare a Railway/Render deployment and provide exact config values.
-- Improve the docs further and include example sample CSVs and a short demo account.
